@@ -1,3 +1,4 @@
+import sys
 from stats import (
     count_words_in_string,
     get_num_of_each_unique_characters,
@@ -13,7 +14,11 @@ def get_book_text(filepath):
 
 
 def main():
-    path = "./books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    path = sys.argv[1]
     frankenstein_content = get_book_text(path)
     amount_words = count_words_in_string(frankenstein_content)
     character_counts = get_num_of_each_unique_characters(frankenstein_content)
